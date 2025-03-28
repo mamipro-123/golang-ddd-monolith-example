@@ -1,0 +1,27 @@
+- .env
+- api-docs
+  - api_docs.json
+- cmd
+  - server
+    - main.go
+- go.mod
+- go.sum
+- internal
+  - mailer
+    - application
+      - handlers
+        - health_handler.go
+        - mailer_handler.go
+      - services
+        - mailer_service.go
+    - domain
+      - email.go
+      - errors.go
+      - repositories
+        - mailer_repository.go
+    - infrastructure
+      - smtp_mailer.go
+  - sharedkernel
+- pkg
+  - router
+    - router.go

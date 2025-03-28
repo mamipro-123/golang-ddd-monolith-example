@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "05ba2c7b-54fb-419d-917d-9b6076be2b31",
+		"name": "Go Domain Drive Design Sample",
+		"description": "API for sending emails using SMTP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24752732"
+	},
+	"item": [
+		{
+			"name": "Email Operations",
+			"item": [
+				{
+					"name": "Health Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{base_domain}}/health",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_domain}}"
+							],
+							"path": [
+								"health"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Email",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"to\": \"muh4mmrd@protonmail.com\",\n  \"subject\": \"Test Subject\",\n  \"body\": \"Hello World\"\n}"
+						},
+						"url": {
+							"raw": "{{protocol}}://{{base_domain}}/send-email",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_domain}}"
+							],
+							"path": [
+								"send-email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Bulk Emails",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"recipients\": [\"muh4mmrd@protonmail.com\", \"muhammedkaynak99@gmail.com\"],\n  \"subject\": \"Test Subject\",\n  \"body\": \"Test Body\"\n}"
+						},
+						"url": {
+							"raw": "{{protocol}}://{{base_domain}}/send-bulk-email",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_domain}}"
+							],
+							"path": [
+								"send-bulk-email"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_domain",
+			"value": "localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "protocol",
+			"value": "http",
+			"type": "string"
+		}
+	]
+}
