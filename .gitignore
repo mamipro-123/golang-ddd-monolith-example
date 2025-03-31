@@ -39,3 +39,6 @@ obj/
 
 # Environment files
 .env 
+
+# Configuration files with sensitive data
+config/config.yaml 
