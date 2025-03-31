@@ -1,0 +1,430 @@
+{
+	"info": {
+		"_postman_id": "e1d40c24-a499-492f-bd47-be241e8ed83a",
+		"name": "Go Domain Drive Design Sample Copy",
+		"description": "API for sending emails using SMTP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24752732"
+	},
+	"item": [
+		{
+			"name": "Email Operations",
+			"item": [
+				{
+					"name": "Html Ops",
+					"item": [
+						{
+							"name": "Send HTML Email",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"to\": \"example@example.com\",\n  \"subject\": \"HTML Test Subject\",\n  \"body\": \"<h1>Merhaba</h1><p>Bu bir <strong>HTML</strong> içerikli e-postadır.</p><ul><li>Madde 1</li><li>Madde 2</li></ul>\",\n  \"is_html\": true\n}"
+								},
+								"url": {
+									"raw": "{{protocol}}://{{base_domain}}/send-email",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{base_domain}}"
+									],
+									"path": [
+										"send-email"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send Bulk HTML Emails",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"recipients\": [\"example@example.com\", \"example2@example.com\"],\n  \"subject\": \"HTML Test Subject\",\n  \"body\": \"<h1>Merhaba</h1><p>Bu bir <strong>HTML</strong> içerikli toplu e-postadır.</p><ul><li>Madde 1</li><li>Madde 2</li></ul>\",\n  \"is_html\": true\n}"
+								},
+								"url": {
+									"raw": "{{protocol}}://{{base_domain}}/send-bulk-email",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{base_domain}}"
+									],
+									"path": [
+										"send-bulk-email"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Plain Text Ops",
+					"item": [
+						{
+							"name": "Send Plain Text Email",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"to\": \"example@example.com\",\n  \"subject\": \"Test Subject\",\n  \"body\": \"Hello World\",\n  \"is_html\": false\n}"
+								},
+								"url": {
+									"raw": "{{protocol}}://{{base_domain}}/send-email",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{base_domain}}"
+									],
+									"path": [
+										"send-email"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send Bulk Plain Text Emails",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"recipients\": [\"example@example.com\", \"example2@example.com\"],\n  \"subject\": \"Test Subject\",\n  \"body\": \"Test Body\",\n  \"is_html\": false\n}"
+								},
+								"url": {
+									"raw": "{{protocol}}://{{base_domain}}/send-bulk-email",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{base_domain}}"
+									],
+									"path": [
+										"send-bulk-email"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Health Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{base_domain}}/health",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_domain}}"
+							],
+							"path": [
+								"health"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Newsletter Operations",
+			"item": [
+				{
+					"name": "Subscribe to Newsletter",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"example@example.com\"\n}"
+						},
+						"url": {
+							"raw": "{{protocol}}://{{base_domain}}/newsletter/subscribe",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_domain}}"
+							],
+							"path": [
+								"newsletter",
+								"subscribe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Unsubscribe from Newsletter",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"token\": \"rS-K2AjKOzsZnzUjlCUL9cV_6YTM_PYq0CJZF04KssA=\"\n}"
+						},
+						"url": {
+							"raw": "{{protocol}}://{{base_domain}}/newsletter/unsubscribe",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_domain}}"
+							],
+							"path": [
+								"newsletter",
+								"unsubscribe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Active Subscribers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{base_domain}}/newsletter/subscribers?page=1&size=10",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_domain}}"
+							],
+							"path": [
+								"newsletter",
+								"subscribers"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						},
+						"description": "Get all active newsletter subscribers with pagination support. Query parameters:\n- page: Page number (default: 1)\n- size: Number of items per page (default: 10)"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Resource Operations",
+			"item": [
+				{
+					"name": "Create Resource",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"key\": \"welcome_message\",\n  \"value\": \"Hoş geldiniz!\",\n  \"lang_code\": \"tr\"\n}"
+						},
+						"url": {
+							"raw": "{{protocol}}://{{base_domain}}/resource",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_domain}}"
+							],
+							"path": [
+								"resource"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Resource",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"value\": \"Yeni hoş geldiniz mesajı!\"\n}"
+						},
+						"url": {
+							"raw": "{{protocol}}://{{base_domain}}/resource/:id",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_domain}}"
+							],
+							"path": [
+								"resource",
+								":id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Resource",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{base_domain}}/resource/:id",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_domain}}"
+							],
+							"path": [
+								"resource",
+								":id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Resource by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{base_domain}}/resource/:id",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_domain}}"
+							],
+							"path": [
+								"resource",
+								":id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Resource by Key and Lang",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{base_domain}}/resource?key=welcome_message&lang_code=tr",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_domain}}"
+							],
+							"path": [
+								"resource"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "welcome_message"
+								},
+								{
+									"key": "lang_code",
+									"value": "tr"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Resources by Language",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{base_domain}}/resource/lang/tr",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_domain}}"
+							],
+							"path": [
+								"resource",
+								"lang",
+								"tr"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Resources with Pagination",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{base_domain}}/resources?page=1&size=10",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_domain}}"
+							],
+							"path": [
+								"resources"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						},
+						"description": "Get all resources with pagination support. Query parameters:\n- page: Page number (default: 1)\n- size: Number of items per page (default: 10)"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_domain",
+			"value": "localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "protocol",
+			"value": "http",
+			"type": "string"
+		}
+	]
+}
